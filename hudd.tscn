@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk1l3qw4l4ntd"]
+
+[ext_resource type="PackedScene" uid="uid://cjc145i6micw2" path="res://hud.tscn" id="1_0oub5"]
+[ext_resource type="Script" path="res://hudd.gd" id="1_wtpvs"]
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wtpvs")
+
+[node name="lifeContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 794.0
+offset_bottom = 392.0
+scale = Vector2(0.24, 0.24)
+theme_override_constants/separation = -200
+
+[node name="TextureRect" parent="lifeContainer" instance=ExtResource("1_0oub5")]
+layout_mode = 2
+
+[node name="TextureRect2" parent="lifeContainer" instance=ExtResource("1_0oub5")]
+layout_mode = 2
+
+[node name="TextureRect3" parent="lifeContainer" instance=ExtResource("1_0oub5")]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = 35.0
+offset_right = 10.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"

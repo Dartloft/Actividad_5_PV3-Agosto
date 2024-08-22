@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://3i5m6fn0sfyk"]
+
+[ext_resource type="PackedScene" uid="uid://dxm7td4wnjeij" path="res://sprite/player.tscn" id="1_hvs1l"]
+[ext_resource type="Script" path="res://game.gd" id="1_v7i0q"]
+[ext_resource type="Texture2D" uid="uid://chmxntgp82ikh" path="res://sprite/bg1.png" id="2_et6nw"]
+[ext_resource type="PackedScene" uid="uid://b7v6yf1jwlj2p" path="res://enemy.tscn" id="3_dt3o3"]
+[ext_resource type="Script" path="res://spawner.gd" id="5_em57d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmpnu"]
+size = Vector2(10, 610)
+
+[node name="Game" type="Node2D"]
+position = Vector2(7, -2)
+script = ExtResource("1_v7i0q")
+enemy_scene = Array[PackedScene]([ExtResource("3_dt3o3")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(255, 304)
+scale = Vector2(0.616865, 0.564909)
+texture = ExtResource("2_et6nw")
+
+[node name="Player" parent="." instance=ExtResource("1_hvs1l")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="wall" type="StaticBody2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/wall"]
+position = Vector2(-5, 295)
+shape = SubResource("RectangleShape2D_dmpnu")
+
+[node name="wall2" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(523, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/wall2"]
+position = Vector2(-6, 295)
+shape = SubResource("RectangleShape2D_dmpnu")
+
+[node name="wall3" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(513, 610)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/wall3"]
+position = Vector2(-5, 295)
+shape = SubResource("RectangleShape2D_dmpnu")
+
+[node name="wall4" type="StaticBody2D" parent="StaticBody2D"]
+position = Vector2(512, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/wall4"]
+position = Vector2(-5, 295)
+shape = SubResource("RectangleShape2D_dmpnu")
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+position = Vector2(262, 16)
+script = ExtResource("5_em57d")
+
+[node name="SpawnTimer" type="Timer" parent="EnemyContainer"]
+one_shot = true
+
+[connection signal="timeout" from="EnemyContainer/SpawnTimer" to="EnemyContainer" method="_on_spawn_timer_timeout"]

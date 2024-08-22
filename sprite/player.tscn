@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxm7td4wnjeij"]
+
+[ext_resource type="Script" path="res://sprite/player.gd" id="1_vfojy"]
+[ext_resource type="Texture2D" uid="uid://bk3ux6675fcmk" path="res://sprite/nav1.png" id="2_qbgib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb5vt"]
+size = Vector2(47, 41)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(264, 542)
+collision_mask = 2
+platform_wall_layers = 255
+script = ExtResource("1_vfojy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.415, 0.415)
+texture = ExtResource("2_qbgib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 0.5)
+shape = SubResource("RectangleShape2D_nb5vt")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-4, -25)
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
