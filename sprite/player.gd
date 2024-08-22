@@ -7,12 +7,15 @@ var VELOCITY = Vector2()
 var bulletPath = preload("res://bullet.tscn")
 var screen_size
 
+
 	
 func _ready():
 	Signals.emit_signal("on_player_life_changed",life)
 	screen_size = get_viewport_rect().size
+	
 
 func _process(delta):
+
 	if(!Input.is_anything_pressed()):
 		velocity.x = 0
 		velocity.y = 0
@@ -35,6 +38,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("fire"):
 		#cargo la funcion shoot()
+		$shot.playing = true
 		shoot()
 	
 func shoot():

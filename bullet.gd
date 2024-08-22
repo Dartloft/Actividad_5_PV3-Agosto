@@ -14,3 +14,4 @@ func _on_area_entered(area):
 		area.die()
 		Signals.emit_signal("on_score_increment",1 )
 		queue_free()
+		$explode.playing = true

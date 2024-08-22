@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://3i5m6fn0sfyk"]
+[gd_scene load_steps=9 format=3 uid="uid://3i5m6fn0sfyk"]
 
 [ext_resource type="PackedScene" uid="uid://dxm7td4wnjeij" path="res://sprite/player.tscn" id="1_hvs1l"]
 [ext_resource type="Script" path="res://game.gd" id="1_v7i0q"]
 [ext_resource type="Texture2D" uid="uid://chmxntgp82ikh" path="res://sprite/bg1.png" id="2_et6nw"]
+[ext_resource type="Script" path="res://background.gd" id="3_dm5ds"]
 [ext_resource type="PackedScene" uid="uid://bk1l3qw4l4ntd" path="res://hudd.tscn" id="5_0g4mv"]
 [ext_resource type="Script" path="res://spawner.gd" id="5_em57d"]
 [ext_resource type="AudioStream" uid="uid://c6oa1xjvh3fst" path="res://sound/back.mp3" id="6_3x4yu"]
@@ -17,6 +18,7 @@ script = ExtResource("1_v7i0q")
 position = Vector2(255, 304)
 scale = Vector2(0.616865, 0.564909)
 texture = ExtResource("2_et6nw")
+script = ExtResource("3_dm5ds")
 
 [node name="hud" parent="." instance=ExtResource("5_0g4mv")]
 anchors_preset = 13
@@ -73,7 +75,5 @@ one_shot = true
 
 [node name="ambientSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3x4yu")
-volume_db = -35.1
-autoplay = true
 
 [connection signal="timeout" from="EnemyContainer/SpawnTimer" to="EnemyContainer" method="_on_spawn_timer_timeout"]

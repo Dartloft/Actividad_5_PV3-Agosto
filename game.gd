@@ -1,6 +1,4 @@
 extends Node
-
-
 #func _ready():
 	#spawn_timer.start()
 
