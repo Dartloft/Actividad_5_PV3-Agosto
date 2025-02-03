@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3i5m6fn0sfyk"]
+[gd_scene load_steps=10 format=3 uid="uid://3i5m6fn0sfyk"]
 
 [ext_resource type="PackedScene" uid="uid://dxm7td4wnjeij" path="res://sprite/player.tscn" id="1_hvs1l"]
 [ext_resource type="Script" path="res://game.gd" id="1_v7i0q"]
@@ -8,13 +8,15 @@
 [ext_resource type="AudioStream" uid="uid://c6oa1xjvh3fst" path="res://sound/back.mp3" id="6_3x4yu"]
 [ext_resource type="PackedScene" uid="uid://c24t5004e2nw8" path="res://power_spawner.tscn" id="7_bad2k"]
 [ext_resource type="PackedScene" uid="uid://cuw4ffxreoa7j" path="res://pause_menu.tscn" id="8_sqrwh"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="9_kb6of"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmpnu"]
 size = Vector2(10, 610)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_v7i0q")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_sqrwh")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(255, 373.975)
@@ -77,19 +79,10 @@ one_shot = true
 [node name="powerSpawner" parent="." instance=ExtResource("7_bad2k")]
 position = Vector2(261, 15)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_sqrwh")]
-
 [node name="ambientSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3x4yu")
 volume_db = -35.1
 pitch_scale = 2.02
 autoplay = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(257, 303)
-script = ExtResource("9_kb6of")
 
 [connection signal="timeout" from="EnemyContainer/SpawnTimer" to="EnemyContainer" method="_on_spawn_timer_timeout"]

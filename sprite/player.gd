@@ -8,14 +8,14 @@ var bulletPath = preload("res://bullet.tscn")
 var screen_size
 
 
-	
 func _ready():
 	Signals.emit_signal("on_player_life_changed",life)
 	screen_size = get_viewport_rect().size
-	
 
 func _process(delta):
-
+	if Engine.is_editor_hint():
+		return
+		
 	if(!Input.is_anything_pressed()):
 		velocity.x = 0
 		velocity.y = 0
@@ -52,11 +52,9 @@ func damage(amount :int):
 	modulate = Color.WHITE_SMOKE
 	life -= amount
 	Signals.emit_signal("on_player_life_changed",life)
-	$Timer.start(0.1)
+	
 	if life <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://control.tscn")
-
-
-func _on_timer_timeout() -> void:
-	modulate = Color(0.784, 0.172, 0.302)
+		$gameover.playing = true
+	

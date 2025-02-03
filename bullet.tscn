@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_54eod"]
 [ext_resource type="Texture2D" uid="uid://dt54aqc6ipv4p" path="res://sprite/bullet.png" id="1_v5whk"]
-[ext_resource type="AudioStream" uid="uid://ccby0mmp634lq" path="res://sound/explosion.mp3" id="3_q8tsj"]
+[ext_resource type="AudioStream" uid="uid://dsqmj2apms172" path="res://sound/explode.mp3" id="3_vr36q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hcp0"]
 size = Vector2(8, 18)
@@ -25,8 +25,9 @@ texture = ExtResource("1_v5whk")
 scale = Vector2(0.4, 0.9)
 
 [node name="explode" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_q8tsj")
-volume_db = -36.337
+stream = ExtResource("3_vr36q")
+volume_db = 24.0
+pitch_scale = 1.03
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

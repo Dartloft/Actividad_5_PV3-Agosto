@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwkf0hnga7kvg"]
+
+[ext_resource type="Script" path="res://powerup.gd" id="1_rfpjj"]
+[ext_resource type="Texture2D" uid="uid://cphm8lj8m7mjr" path="res://sprite/meteoro.png" id="2_gw84a"]
+[ext_resource type="AudioStream" uid="uid://qb0knurmqulj" path="res://sound/colision.mp3" id="3_y1luu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gn0k8"]
+radius = 21.0
+
+[node name="powerup" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_rfpjj")
+velocity = Vector2(0, 50)
+spriteSize = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.038, 0.038)
+texture = ExtResource("2_gw84a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_gn0k8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="colision" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_y1luu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp4kry5c6nn4w"]
+
+[ext_resource type="Script" path="res://control_2.gd" id="1_g0s46"]
+[ext_resource type="Texture2D" uid="uid://chmxntgp82ikh" path="res://sprite/bg1.png" id="2_x5cuf"]
+[ext_resource type="Texture2D" uid="uid://cmlqpgythox54" path="res://sprite/nav2.png" id="3_gstu7"]
+[ext_resource type="Texture2D" uid="uid://bk3ux6675fcmk" path="res://sprite/nav1.png" id="4_4kp6j"]
+
+[node name="menu" type="CanvasLayer"]
+script = ExtResource("1_g0s46")
+
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(192, 348)
+texture = ExtResource("2_x5cuf")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 512.0
+offset_bottom = 602.0
+
+[node name="Nav3" type="Sprite2D" parent="."]
+position = Vector2(252, 50)
+scale = Vector2(0.538265, 0.538265)
+texture = ExtResource("3_gstu7")
+
+[node name="Nav4" type="Sprite2D" parent="."]
+position = Vector2(81, 175)
+scale = Vector2(0.538265, 0.538265)
+texture = ExtResource("3_gstu7")
+
+[node name="Nav1" type="Sprite2D" parent="."]
+position = Vector2(257, 201)
+scale = Vector2(0.538265, 0.538265)
+texture = ExtResource("4_4kp6j")
+
+[node name="Nav5" type="Sprite2D" parent="."]
+position = Vector2(417, 177)
+scale = Vector2(0.538265, 0.538265)
+texture = ExtResource("3_gstu7")
+
+[node name="play" type="Button" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = 191.0
+offset_top = 247.0
+offset_right = 312.0
+offset_bottom = 289.0
+text = "PLAY"
+
+[node name="quit" type="Button" parent="."]
+modulate = Color(1, 0.0784314, 0, 1)
+offset_left = 213.0
+offset_top = 303.0
+offset_right = 290.0
+offset_bottom = 341.0
+text = "QUIT"
+
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
