@@ -1,5 +1,7 @@
 extends Control
 
+var is_mute = false
+
 var is_paused:bool = true:
 	set = set_paused
 	
@@ -18,3 +20,13 @@ func _on_resume_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	is_mute = !is_mute
+	if is_mute:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),true)
+		
+	else:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
+		
